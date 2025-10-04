@@ -10,6 +10,8 @@ const Login = () => {
     "http://localhost:5152/login"
   );
 
+  console.log("REACT_APP_GOOGLE_CLIENT_ID", process.env.REACT_APP_GOOGLE_CLIENT_ID);
+
   useEffect(() => {
     /* global google */
     if (window.google) {
