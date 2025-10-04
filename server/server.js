@@ -11,17 +11,13 @@ const httpServer = createServer(app)
 // Socket.io initialize
 const io = new Server(httpServer, {
   cors: {
-    origin: '*', // frontend URL dal sakte ho, jaise http://localhost:3000
+    origin: '*',
     methods: ['GET', 'POST'],
   },
 })
 
 
-
-
-
 const onlineUsers = new Map();
-
 const rooms = []
 
 // Socket connection handle karna
@@ -137,7 +133,7 @@ io.on('connection', (socket) => {
   socket.emit("test1", { "ayush": "mishra ji" })
 
 
-  console.log("rooms are", rooms);
+
 
 
 
@@ -175,7 +171,7 @@ io.on('connection', (socket) => {
 
   // Client se message receive karna
   // socket.on('send_message', (data) => {
-  //   console.log('Message received:', data)
+
   //   // Broadcast to all other clients
   //   socket.broadcast.emit('receive_message', data)
   // })

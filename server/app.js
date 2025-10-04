@@ -2,11 +2,7 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import {config} from 'dotenv'
 import morgan from 'morgan'
-// import userRoutes from './route/user.routes.js'
-// import errorMiddleware from './middlewares/error.middleware.js'
-// import courseRouter from './route/course.routes.js'
 import cors from 'cors'
-
 import errorMiddleware from './middlewares/error.middleware.js'
 import { connectRedis } from './redisClient.js'
 import productRouter from './route/productRoute.js'
@@ -40,12 +36,6 @@ app.use('/api/v1/user', userRouter);
 app.use('/api/v1/sidebar', sideBarRoute);
 
 app.use('/api/v1/user',userRouter)
-// app.use('/api/v1/courses',courseRouter)
-// app.use('/api/v1/payements',payementRoutes)
-// app.use('/api/v1/demo/video',demoRoute)
-
-// app.use('/api/v1/admin/stats',stats)
-
 
 
 
@@ -67,14 +57,9 @@ app.all('*',(req,res)=>{
     res.status(404).send('OOPS!! 404 NOT FOUND')
 })
 
-
 app.use(errorMiddleware)
 
-// app.all('*',(req,res)=>{
-//    res.status(404).send('OPPS! 404 NOT FOUND')
-// }) 
 
-// 3 moduele
 
 
 export default app
