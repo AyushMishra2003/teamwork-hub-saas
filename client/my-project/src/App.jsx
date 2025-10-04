@@ -1,34 +1,22 @@
-import React, { useState, useEffect } from "react";
-import LoginPage from "./page/Login";
-import Home from "./page/Home";
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// import Landing from "./page/Landing";
+import Login from "./page/Login";
+import SignUp from "./page/SignUp";
+import Loading from "./page/Loading";
 
 const App = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("loggedInUser");
-    if (storedUser) {
-      setUser(storedUser);
-    }
-  }, []);
-
-  const handleLogin = (email) => {
-    setUser(email);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("loggedInUser");
-    setUser(null);
-  };
+  const [user, setUser] = useState({});
 
   return (
-    <div>
-      {user ? (
-        <Home user={user} onLogout={handleLogout} />
-      ) : (
-        <LoginPage onLogin={handleLogin} />
-      )}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element={<Landing />} /> */}
+        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/signup" element={<SignUp setUser={setUser} />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
